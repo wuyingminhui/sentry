@@ -5,6 +5,7 @@ Schema Changes
 ~~~~~~~~~~~~~~
 - Added index on ``ProjectPlatform(last_seen)`` column
 - Added index on ``GroupCommitResolution.commit_id``
+- Added ``Email`` model
 
 Version 8.19
 ------------
