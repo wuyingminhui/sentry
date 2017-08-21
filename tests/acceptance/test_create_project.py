@@ -35,6 +35,12 @@ class CreateProjectTest(AcceptanceTestCase):
 
     def test_no_teams(self):
         self.team = self.create_team(organization=self.org, name='Mariachi Band')
+        self.create_member(
+            user=self.user,
+            organization=self.org,
+            role='owner',
+            teams=[self.team],
+        )
         self.browser.get(self.path)
         self.browser.wait_until_not('.loading')
         self.browser.snapshot(name='create project no teams')
