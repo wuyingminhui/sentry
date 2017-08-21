@@ -42,8 +42,8 @@ const ScoreBar = React.createClass({
       vertical,
       horizontal: !vertical
     });
-    // Make sure palette index is between 0 and maxScore
-    let paletteIndex = score > maxScore ? maxScore : score < 0 ? 0 : score - 1;
+    // Make sure palette index is between 0 and maxScore - 1
+    let paletteIndex = score > maxScore - 1 ? maxScore - 1 : score < 0 ? 0 : score - 1;
 
     // Size of bar, depends on orientation, although we could just apply a transformation via css
     let sizeStyle = {
@@ -62,14 +62,14 @@ const ScoreBar = React.createClass({
 
     return (
       <div className={cx}>
-        {[...Array(score)].map((j, i) => {
+        {[...Array(paletteIndex)].map((j, i) => {
           let paletteClassName = (useCss && paletteClassNames[paletteIndex]) || '';
           let barCx = classNames('score-bar-bar', {
             [paletteClassName]: !!paletteClassName
           });
           return <div key={i} style={style} className={barCx} />;
         })}
-        {[...Array(maxScore - score)].map((j, i) => (
+        {[...Array(maxScore - paletteIndex)].map((j, i) => (
           <div
             style={{...sizeStyle}}
             key={`empty-${i}`}

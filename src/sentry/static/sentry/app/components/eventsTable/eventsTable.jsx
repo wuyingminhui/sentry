@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import {t} from '../../locale';
 import CustomPropTypes from '../../proptypes';
 import EventsTableRow from './eventsTableRow';
-import '../../../less/components/eventsTable/eventsTable.less';
 
 const EventsTable = React.createClass({
   propTypes: {

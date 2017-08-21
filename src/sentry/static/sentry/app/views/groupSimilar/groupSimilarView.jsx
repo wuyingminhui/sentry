@@ -102,7 +102,7 @@ const GroupGroupingView = React.createClass({
           <strong>{t('Warning')}:</strong>
           {' '}
           {t(
-            'This is an experimental feature. Data may not be immediately available while we process the unmerge.'
+            'This is an experimental feature. Data may not be immediately available while we process the merge.'
           )}
         </div>
 

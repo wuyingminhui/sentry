@@ -6,7 +6,6 @@ import CustomPropTypes from '../../proptypes';
 import Avatar from '../../components/avatar';
 import DateTime from '../../components/dateTime';
 import deviceNameMapper from '../../utils/deviceNameMapper';
-import '../../../less/components/eventsTable/eventsTableRow.less';
 
 const EventsTableRow = React.createClass({
   propTypes: {
