@@ -22,22 +22,9 @@ class Migration(SchemaMigration):
         )
         db.send_create_signal('sentry', ['Email'])
 
-        # Adding field 'UserEmail.global_email'
-        db.add_column(
-            'sentry_useremail',
-            'global_email',
-            self.gf('sentry.db.models.fields.foreignkey.FlexibleForeignKey')(
-                related_name='useremails', null=True, to=orm['sentry.Email']
-            ),
-            keep_default=False
-        )
-
     def backwards(self, orm):
         # Deleting model 'Email'
         db.delete_table('sentry_email')
-
-        # Deleting field 'UserEmail.global_email'
-        db.delete_column('sentry_useremail', 'global_email_id')
 
     models = {
         'sentry.activity': {

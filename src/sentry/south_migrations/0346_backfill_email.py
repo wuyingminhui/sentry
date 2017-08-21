@@ -29,8 +29,6 @@ class Migration(DataMigration):
 
         for useremail in RangeQuerySetWrapperWithProgressBar(queryset):
             email, _ = Email.objects.get_or_create(email=useremail.email)
-            useremail.global_email = email
-            useremail.save()
 
     def backwards(self, orm):
         "Write your backwards methods here."
@@ -3152,13 +3150,6 @@ class Migration(DataMigration):
             'email': ('django.db.models.fields.EmailField', [], {
                 'max_length': '75'
             }),
-            'global_email': (
-                'sentry.db.models.fields.foreignkey.FlexibleForeignKey', [], {
-                    'related_name': "'useremails'",
-                    'null': 'True',
-                    'to': "orm['sentry.Email']"
-                }
-            ),
             'id':
             ('sentry.db.models.fields.bounded.BoundedBigAutoField', [], {
                 'primary_key': 'True'
