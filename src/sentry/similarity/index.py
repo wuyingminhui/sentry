@@ -50,8 +50,8 @@ class MinHashIndex(object):
             scope,
         ]
 
-        for idx, features in items:
-            arguments.append(idx)
+        for idx, threshold, features in items:
+            arguments.extend([idx, threshold])
             arguments.extend(self._build_signature_arguments(features))
 
         return [
@@ -63,7 +63,7 @@ class MinHashIndex(object):
             )
         ]
 
-    def compare(self, scope, key, indices, timestamp=None):
+    def compare(self, scope, key, items, timestamp=None):
         if timestamp is None:
             timestamp = int(time.time())
 
@@ -78,7 +78,8 @@ class MinHashIndex(object):
             key,
         ]
 
-        arguments.extend(indices)
+        for idx, threshold in items:
+            arguments.extend([idx, threshold])
 
         return [
             [(item, float(score)) for item, score in result]
